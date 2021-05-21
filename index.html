@@ -68,13 +68,20 @@
       <img src="img/loading.gif" alt="">
     </div>
 
-    <div class="infoSearch">
-      <hr>
-      <strong>Município</strong>
-      <p id="orgao"></p>
-      <strong>Quantidade de relatórios</strong>
-      <p id="relatorios"></p>
-      <hr>
+    <div class="infoSearch mt-5">
+      <div class="row">
+        <div class="col-md-4">
+          <strong>Município</strong>
+          <p id="orgao"></p>
+          <strong>Quantidade de relatórios</strong>
+          <p id="relatorios"></p>
+        </div>
+        <div class="col-md-8">
+          <strong>Filtrar por número do empenho</strong>
+          <br>
+          <input id="filterResult" class="" type="text" placeholder="">
+        </div>
+      </div>
     </div>
    
     <table class="table mt-5">
@@ -96,7 +103,7 @@
 
   </div>
 
-  <script src="tables.js"></script>
+  <script src="ui.js"></script>
   <script src="script.js"></script>
 
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
