@@ -25,7 +25,6 @@ class UI {
     let i = 0;
     data.forEach(function (city) {
       i++
-      console.log("city", city)
       tbodyOutput += `
       <tr id=${i}>
         <td class="text-center">${i}</td>
@@ -46,7 +45,6 @@ class UI {
     let i = 0;
     data.forEach(function (city) {
       i++
-      console.log("city", city)
       tbodyOutput += `
       <tr id=${i}>
         <td class="text-center">${i}</td>

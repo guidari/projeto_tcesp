@@ -18,20 +18,30 @@
   #dataTable tr:nth-child(even) {
     background-color: #f2f2f2;
   }
+
+  .searchBar {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-gap: 1rem;
+  }
+
+  @media only screen and (max-width: 600px) {
+    .searchBar {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
 </style>
+
 <body>
   <div class="container">
     <h3 class="mt-5">Pesquisar município</h3>
 
-    <div class="filters d-flex mt-5">
-
+    <div class="searchBar">
       <input id="cityName" class="" type="text" placeholder="Pesquisar uma cidade">
 
-      <input id="cityYear" class="" type="number" placeholder="Digite o ano"
-        style="max-width:250px; margin-left: 20px;">
+      <input id="cityYear" class="" type="number" placeholder="Digite o ano">
 
-      <select class="form-select form-select-lg ml-5" name="cityMonth" id="cityMonth"
-        style="max-width:200px; margin-left: 20px;">
+      <select class="form-select form-select-lg ml-5" name="cityMonth" id="cityMonth">
         <option value="" disabled selected>Selecione um mês</option>
         <option value="01">Janeiro</option>
         <option value="02">Fevereiro</option>
@@ -47,17 +57,15 @@
         <option value="12">Dezembro</option>
       </select>
 
-      <select class="form-select form-select-lg ml-5" name="cityInfo" id="cityInfo"
-        style="max-width:200px; margin-left: 20px;">
+      <select class="form-select form-select-lg ml-5" name="cityInfo" id="cityInfo">
         <option value="" disabled selected>Selecione um tipo</option>
         <option value="despesas">Despesas</option>
         <option value="receitas">Receitas</option>
       </select>
 
-      <button class="search btn btn-primary" style="margin-left: 20px;">
+      <button class="search btn btn-primary">
         Pesquisar
       </button>
-
     </div>
 
     <div class="error alert alert-danger" role="alert">
@@ -77,27 +85,18 @@
           <p id="relatorios"></p>
         </div>
         <div class="col-md-8">
-          <strong>Filtrar por número do empenho</strong>
-          <br>
-          <input id="filterResult" class="" type="text" placeholder="">
+          <input id="filterInput" class="" type="search" placeholder="Pesquisar resultados">
+          <button class="search btn btn-primary mt-2" id="filterButton" onclick="searchFilter()">Pesquisar</button>
         </div>
       </div>
     </div>
-   
+
     <table class="table mt-5">
       <thead id="dataTableHead" class="text-center">
-        <!-- <tr>
-          <th class="text-center" scope="col">#</th>
-          <th class="text-center" scope="col">Tipo de evento de despesa</th>
-          <th class="text-center" scope="col">Número do empenho</th>
-          <th class="text-center" scope="col">Fornecedor</th>
-          <th class="text-center" scope="col">Nome do fornecedor</th>
-          <th class="text-center" scope="col">Data</th>
-          <th class="text-center" scope="col">Valor da despesa</th>
-        </tr> -->
+
       </thead>
       <tbody class="text-center" id='dataTable'>
-        
+
       </tbody>
     </table>
 
