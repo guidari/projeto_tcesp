@@ -26,7 +26,7 @@ async function getCity(e) {
         theadOutput = theadDespesa;
         ui.showDespesa(data);
       } else if (info === 'receitas') {
-        theadOutput = theadeceita;
+        theadOutput = theadReceita;
         ui.showReceita(data);
       }
 
@@ -38,7 +38,7 @@ async function getCity(e) {
 
     })
     .catch(err => {
-      // console.log(err)
+      alert("catch error", err)
       document.querySelector('#loading').style.display = 'none';
       document.querySelector(".error").style.display = 'block'
       document.querySelector('.infoSearch').style.display = 'none';
@@ -49,12 +49,16 @@ async function getCity(e) {
       }, 3000);
 
     });
+  $(document).ready(function () {
+    $('#tableInfo').DataTable({
+      destroy: true,
+      paging: false,
+      // search: false,
+      info: false,
+      language: dataTableTranslation,
+      retrieve: true,
+    });
+  });
 
   e.preventDefault();
 }
-
-function searchFilter(e) {
-  const userText = document.querySelector("#filterInput").value
-  window.find(userText);
-}
-
