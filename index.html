@@ -73,16 +73,19 @@
 
     <div class="infoSearch mt-5">
       <div class="row">
-        <div class="col-md-4">
+        <div id="cityQtd" class="col-md-4">
           <strong>Município</strong>
           <p id="orgao"></p>
           <strong>Quantidade de relatórios</strong>
           <p id="relatorios"></p>
         </div>
+        <div class="col-md-8">
+          <button id="printBtn" class="btn btn-primary">Imprimir relatório</button>
+        </div>
       </div>
     </div>
 
-    <table id="tableInfo" class="table mt-5">
+    <table border="1" id="tableInfo" class="table my-5">
       <thead id="dataTableHead" class="text-center">
 
       </thead>

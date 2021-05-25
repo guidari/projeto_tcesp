@@ -19,7 +19,6 @@ async function getCity(e) {
   await fetch(`https://transparencia.tce.sp.gov.br/api/json/${info}/${filterName}/${year}/${month}`)
     .then(res => res.json())
     .then(data => {
-      // console.log(data)
       let theadOutput = '';
 
       if (info === 'despesas') {
@@ -53,7 +52,6 @@ async function getCity(e) {
     $('#tableInfo').DataTable({
       destroy: true,
       paging: false,
-      // search: false,
       info: false,
       language: dataTableTranslation,
       retrieve: true,
@@ -62,3 +60,15 @@ async function getCity(e) {
 
   e.preventDefault();
 }
+
+function printData() {
+  var divToPrint = document.getElementById("tableInfo");
+  var divToPrint2 = document.getElementById("cityQtd");
+  newWin = window.open("");
+  newWin.document.write(divToPrint2.outerHTML);
+  newWin.document.write(divToPrint.outerHTML);
+  newWin.print();
+  newWin.close();
+}
+
+document.querySelector('#printBtn').addEventListener('click', printData);
