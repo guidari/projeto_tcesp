@@ -37,15 +37,17 @@ async function getCity(e) {
 
     })
     .catch(err => {
-      alert("catch error", err)
-      document.querySelector('#loading').style.display = 'none';
+      console.log("catch error", err)
       document.querySelector(".error").style.display = 'block'
-      document.querySelector('.infoSearch').style.display = 'none';
-      document.querySelector('#dataTableHead').style.display = 'none';
-
       setTimeout(() => {
         document.querySelector(".error").style.display = 'none'
       }, 3000);
+      document.querySelector('#loading').style.display = 'none';
+      document.querySelector('.infoSearch').style.display = 'none';
+      document.querySelector('#dataTableHead').style.display = 'none';
+      document.querySelector('#tableInfo_wrapper').style.display = 'none';
+
+
 
     });
   $(document).ready(function () {
@@ -65,6 +67,7 @@ function printData() {
   var divToPrint = document.getElementById("tableInfo");
   var divToPrint2 = document.getElementById("cityQtd");
   newWin = window.open("");
+  newWin.document.write('<link rel="stylesheet" href="src/css/style.css" type="text/css" />');
   newWin.document.write(divToPrint2.outerHTML);
   newWin.document.write(divToPrint.outerHTML);
   newWin.print();

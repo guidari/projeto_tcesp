@@ -9,24 +9,8 @@
     integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css" />
   <link rel="stylesheet" type="text/css" href="src/dataTable/dataTable.css"></head>
-<style>
-  #dataTable tr:nth-child(even) {
-    background-color: #f2f2f2;
-  }
-
-  .searchBar {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    grid-gap: 1rem;
-  }
-
-  @media only screen and (max-width: 600px) {
-    .searchBar {
-      grid-template-columns: 1fr 1fr;
-    }
-  }
-</style>
-
+  <link rel="stylesheet" href="src/css/style.css">
+  <link rel="stylesheet" href="src/css/print.css" media="print">
 <body>
   <div class="container">
     <h3 class="mt-5">Pesquisar município</h3>
@@ -85,7 +69,7 @@
       </div>
     </div>
 
-    <table border="1" id="tableInfo" class="table my-5">
+    <table id="tableInfo" class="table my-5">
       <thead id="dataTableHead" class="text-center">
 
       </thead>
