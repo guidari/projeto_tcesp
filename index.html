@@ -8,53 +8,65 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css" />
-  <link rel="stylesheet" type="text/css" href="src/dataTable/dataTable.css"></head>
-  <link rel="stylesheet" href="src/css/style.css">
-  <link rel="stylesheet" href="src/css/print.css" media="print">
+  <link rel="stylesheet" type="text/css" href="src/dataTable/dataTable.css">
+</head>
+<link rel="stylesheet" href="src/css/style.css">
+<link rel="stylesheet" href="src/css/print.css" media="print">
+
 <body>
   <div class="container">
     <h3 class="mt-5">Pesquisar município</h3>
+    <div class="row">
+      <!-- SEARCH  -->
+      <div class="col-md-8 col-sm-12 searchBar">
+        <input id="cityName" class="" type="text" placeholder="Pesquisar uma cidade">
 
-    <div class="searchBar">
-      <input id="cityName" class="" type="text" placeholder="Pesquisar uma cidade">
+        <input id="cityYear" class="" type="number" placeholder="Digite o ano">
 
-      <input id="cityYear" class="" type="number" placeholder="Digite o ano">
+        <select class="form-select form-select-lg ml-5" name="cityMonth" id="cityMonth">
+          <option value="" disabled selected>Selecione um mês</option>
+          <option value="01">Janeiro</option>
+          <option value="02">Fevereiro</option>
+          <option value="03">Março</option>
+          <option value="04">Abril</option>
+          <option value="05">Maio</option>
+          <option value="06">Junho</option>
+          <option value="07">Julho</option>
+          <option value="08">Agosto</option>
+          <option value="09">Setembro</option>
+          <option value="10">Outubro</option>
+          <option value="11">Novembro</option>
+          <option value="12">Dezembro</option>
+        </select>
 
-      <select class="form-select form-select-lg ml-5" name="cityMonth" id="cityMonth">
-        <option value="" disabled selected>Selecione um mês</option>
-        <option value="01">Janeiro</option>
-        <option value="02">Fevereiro</option>
-        <option value="03">Março</option>
-        <option value="04">Abril</option>
-        <option value="05">Maio</option>
-        <option value="06">Junho</option>
-        <option value="07">Julho</option>
-        <option value="08">Agosto</option>
-        <option value="09">Setembro</option>
-        <option value="10">Outubro</option>
-        <option value="11">Novembro</option>
-        <option value="12">Dezembro</option>
-      </select>
+        <select class="form-select form-select-lg ml-5" name="cityInfo" id="cityInfo">
+          <option value="" disabled selected>Selecione um tipo</option>
+          <option value="despesas">Despesas</option>
+          <option value="receitas">Receitas</option>
+        </select>
 
-      <select class="form-select form-select-lg ml-5" name="cityInfo" id="cityInfo">
-        <option value="" disabled selected>Selecione um tipo</option>
-        <option value="despesas">Despesas</option>
-        <option value="receitas">Receitas</option>
-      </select>
-
-      <button class="search btn btn-primary">
-        Pesquisar
-      </button>
+      </div>
+      <!-- BUTTONS SEARCH -->
+      <div class="col-md-4 col-sm-12 searchButtons">
+        <button type="button" class="search btn btn-primary">
+          Pesquisar
+        </button>
+        <button type="button" class="listCities btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          Verificar Municípios disponíveis
+        </button>
+      </div>
     </div>
 
+    <!-- ERROR SEARCH -->
     <div class="error alert alert-danger" role="alert">
-      <p class="mb-0">Digite um município válido</p>
+      <p class="mb-0">Município ou ano inválidos.</p>
     </div>
 
+    <!-- SEARCH RESULTS -->
     <div class="text-center" id="loading">
       <img src="src/img/loading.gif" alt="">
     </div>
-
+    <!-- INFO RESULTS -->
     <div class="infoSearch mt-5">
       <div class="row">
         <div id="cityQtd" class="col-md-4">
@@ -68,7 +80,7 @@
         </div>
       </div>
     </div>
-
+    <!-- TABLE RESULTS -->
     <table id="tableInfo" class="table my-5">
       <thead id="dataTableHead" class="text-center">
 
@@ -77,8 +89,33 @@
 
       </tbody>
     </table>
-  </div>
+  </div> <!-- CONTAINER -->
 
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Municípios disponíveis</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <table id="tableCities" class="table table-striped table-bordered">
+            <thead class="text-center">
+              <th class="text-center" scope="col">#</th>
+              <th class="text-center" scope="col">Cidade</th>
+            </thead>
+            <tbody class="text-center" id='modalCities'>
+
+            </tbody>
+          </table>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
     integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
@@ -86,14 +123,13 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js"
     integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT"
     crossorigin="anonymous"></script>
-    <script
-			  src="https://code.jquery.com/jquery-3.6.0.min.js"
-			  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-			  crossorigin="anonymous"></script>
-    <script type="text/javascript" charset="utf8" src="src/dataTable/dataTable.js"></script>
-    <script src="ui.js"></script>
-    <script src="script.js"></script>
-  
-  </body>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script type="text/javascript" charset="utf8" src="src/dataTable/dataTable.js"></script>
+  <script src="ui.js"></script>
+  <script src="script.js"></script>
+  <script src="apiMunicipios.js"></script>
+
+</body>
 
 </html>

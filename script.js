@@ -2,6 +2,7 @@ const filterInput = document.querySelector("#filterResult");
 const ui = new UI;
 
 document.querySelector('.search').addEventListener('click', getCity);
+document.querySelector('#printBtn').addEventListener('click', printData);
 document.querySelector('#loading').style.display = 'none';
 document.querySelector(".error").style.display = 'none'
 document.querySelector(".infoSearch").style.display = 'none'
@@ -63,6 +64,22 @@ async function getCity(e) {
   e.preventDefault();
 }
 
+
+$(document).ready(function () {
+  fetch(`https://transparencia.tce.sp.gov.br/api/json/municipios`)
+    .then(res => res.json())
+    .then(data => {
+      console.log(data)
+      ui.showCities(data)
+
+    })
+    .catch(err => {
+      console.log("catch error", err)
+
+    });
+});
+
+
 function printData() {
   var divToPrint = document.getElementById("tableInfo");
   var divToPrint2 = document.getElementById("cityQtd");
@@ -74,4 +91,3 @@ function printData() {
   newWin.close();
 }
 
-document.querySelector('#printBtn').addEventListener('click', printData);

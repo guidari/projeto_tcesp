@@ -58,6 +58,18 @@ class UI {
     })
     document.querySelector("#dataTable").innerHTML = tbodyOutput;
   }
+  showCities(data) {
+    let modalBody = '';
+    let i = 0;
+    data.forEach(function (city) {
+      i++
+      modalBody += `<tr id=${i}>
+        <td class="text-center">${i}</td>
+        <td class="text-center">${city.municipio_extenso}</td>
+      </tr>`
+    })
+    document.querySelector("#modalCities").innerHTML = modalBody;
+  }
 }
 
 const dataTableTranslation = {
