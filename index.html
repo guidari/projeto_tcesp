@@ -35,12 +35,11 @@
       <div class="row">
         <!-- SEARCH  -->
         <div class="col-md-8 col-sm-12 searchBar">
-          <input
+          <select
             id="cityName"
-            class=""
-            type="text"
-            placeholder="Pesquisar uma cidade"
-          />
+            class="form-select form-select-lg ml-5"
+            name="selectCities"
+          ></select>
 
           <input
             id="cityYear"
@@ -98,7 +97,7 @@
       <!-- ERROR SEARCH -->
       <div class="error">
         <div class="alert alert-danger" role="alert">
-          <p class="mb-0">Município ou data inválidos.</p>
+          <p class="mb-0">Data inválida ou munícipio não atualizado.</p>
         </div>
         <p>
           Caso tenha digitado as informações corretamente, verifique a data. As

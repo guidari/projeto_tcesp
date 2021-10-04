@@ -69,6 +69,7 @@ $(document).ready(function () {
     .then((data) => {
       // console.log(data);
       ui.showCities(data);
+      ui.selectCities(data);
     })
     .catch((err) => {
       console.log("catch error", err);
