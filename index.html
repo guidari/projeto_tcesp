@@ -96,8 +96,22 @@
       </div>
 
       <!-- ERROR SEARCH -->
-      <div class="error alert alert-danger" role="alert">
-        <p class="mb-0">Município ou ano inválidos.</p>
+      <div class="error">
+        <div class="alert alert-danger" role="alert">
+          <p class="mb-0">Município ou data inválidos.</p>
+        </div>
+        <p>
+          Caso tenha digitado as informações corretamente, verifique a data. As
+          informações demoraram até 2 meses para ser inserida na API.
+        </p>
+        <p>Preencha as informações para inspeção:</p>
+
+        <input id="nomeMunicipio" type="text" placeholder="Nome do município" />
+        <input id="urlMunicipio" type="text" placeholder="URL" />
+        <input id="tipoUrlMunicipio" type="text" placeholder="Tipo da URL" />
+        <button id="insertURL" type="button" class="btn btn-primary">
+          Inserir url
+        </button>
       </div>
 
       <!-- SEARCH RESULTS -->
@@ -192,7 +206,8 @@
       src="src/dataTable/dataTable.js"
     ></script>
     <script src="ui.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="script.js"></script>
-    <script src="apiMunicipios.js"></script>
+    <!-- <script src="apiMunicipios.js"></script> -->
   </body>
 </html>
