@@ -64,8 +64,10 @@ class UI {
     data.forEach(function (city) {
       i++;
       modalBody += `<tr id=${i}>
-        <td class="text-center">${i}</td>
-        <td class="text-center">${city.municipio_extenso}</td>
+      <td class="text-center">${i}</td>
+      <td class="text-center">🟢</td>
+      <td class="text-center">${city.municipio_extenso}</td>
+
       </tr>`;
     });
     document.querySelector("#modalCities").innerHTML = modalBody;
