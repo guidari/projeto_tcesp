@@ -111,3 +111,24 @@ function insertURL() {
     .then((response) => response.json(data))
     .then((data) => console.log(data));
 }
+
+// Closer Error message
+document.querySelector("#closeError").addEventListener("click", closeError);
+
+function closeError() {
+  document.querySelector(".error").style.display = "none";
+}
+
+// Success message
+document.querySelector("#insertURL").addEventListener("click", successMessage);
+
+function successMessage() {
+  document.querySelector("#sucessMessage").style.display = "block";
+  document.querySelector("#sucessMessage").innerHTML =
+    "<div class='alert alert-success' role='alert'>Inserção realizada com sucesso</div>";
+
+  setTimeout(() => {
+    document.querySelector("#sucessMessage").style.display = "none";
+    document.querySelector(".error").style.display = "none";
+  }, 3000);
+}
